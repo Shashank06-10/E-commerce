@@ -1,0 +1,135 @@
+# 🛍️ RagulaMart — Modular PHP eCommerce Platform
+
+Welcome to **RagulaMart**, a secure, scalable, and modular eCommerce platform built with PHP (PDO), MySQL, and vanilla JS. This project is designed for extensibility, maintainability, and real-world integration.
+
+---
+
+## 🚀 Features
+
+- ✅ User authentication (login/register/logout)
+- ✅ Role-based navigation (guest vs. logged-in user)
+- ✅ Product listing with dynamic API fetch
+- ✅ Cart management with session-aware logic
+- ✅ Order placement with transactional integrity
+- ✅ Order history and item breakdown
+- ✅ Sticky footer layout and responsive design
+- ✅ Modular folder structure for scalability
+
+---
+
+## 🗂️ Folder Structure
+
+ecommerce-platform/
+│
+├── frontend/                  # Pure HTML, CSS, JS
+│   ├── assets/
+│   │   ├── css/               # Stylesheets (main.css, responsive.css)
+│   │   ├── js/                # JS files (cart.js, auth.js, ui.js)
+│   │   └── images/            # Product images, banners
+│   ├── components/            # Reusable HTML snippets (header.html, footer.html)
+│   ├── pages/                 # Static pages (home.html, products.html, cart.html)
+│   └── index.html             # Entry point
+│
+├── backend/                   # PHP + PDO + API
+│   ├── config/
+│   │   └── config.php         # DB credentials, constants
+│   ├── includes/
+│   │   ├── db.php             # PDO connection
+│   │   ├── session.php        # Session management
+│   │   └── functions.php      # Common utilities
+│   ├── api/
+│   │   ├── auth/              # login.php, register.php, logout.php
+│   │   ├── products/          # get-products.php, get-product.php
+│   │   ├── cart/              # add-to-cart.php, get-cart.php
+│   │   ├── orders/            # place-order.php, get-orders.php
+│   │   └── user/              # get-profile.php, update-profile.php
+│   └── public/                # Entry points for AJAX (e.g., api router)
+│       └── index.php
+│
+├── database/
+│   └── schema.sql             # SQL schema and seed data
+│
+├── .htaccess                  # Rewrite rules (if using Apache)
+└── README.md                  # Project overview
+
+
+---
+
+## 🛠️ Setup Instructions
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/your-username/ecommerce-user.git
+
+Configure the database Create a MySQL database and import your schema:
+
+users
+
+products
+
+cart
+
+orders
+
+order_items
+
+Update DB credentials Edit includes/db.php:
+$pdo = new PDO("mysql:host=localhost;dbname=your_db", "username", "password");
+
+Start your local server
+php -S localhost:8000
+
+Access the app
+http://localhost:8000/pages/index.php
+
+Database Schema Overview
+users
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+email VARCHAR(100) UNIQUE,
+password VARCHAR(255)
+
+products
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255),
+description TEXT,
+price DECIMAL(10,2),
+stock INT,
+image VARCHAR(255)
+
+cart
+cartid INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT,
+product_id INT,
+quantity INT,
+added_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+orders
+ordersid INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT,
+product_id INT,
+quantity INT,
+added_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+order_items
+id INT PRIMARY KEY AUTO_INCREMENT,
+order_id INT,
+product_id INT,
+quantity INT,
+price DECIMAL(10,2),
+added_at DATETIME DEFAULT CURRENT_TIMESTAMP
+
+📦 API Endpoints
+Endpoint	Method	Description
+/api/products/get-products.php	GET	Fetch all products
+/api/cart/add-to-cart.php	POST	Add product to cart
+/api/orders/place-order.php	POST	Place an order
+/api/orders/get-orders.php	GET	Fetch user's order history
+/api/orders/get-order-items.php	GET	Fetch items for a specific order
+
+👨‍💻 Author
+Ragula — Architecting scalable, secure, and maintainable web platforms with precision and passion.
+
+Once saved, you’ll have a fully functional `README.md` ready to commit to your repo or share with collaborators.
+
+Want me to help generate a matching `CONTRIBUTING.md` or `docs/architecture.md` next?
