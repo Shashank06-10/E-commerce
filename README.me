@@ -97,6 +97,14 @@ price DECIMAL(10,2),
 stock INT,
 image VARCHAR(255)
 
+insert items into products
+INSERT INTO products (id, name, description, price, stock, created_at) VALUES
+(1, 'Wireless Mouse', 'Ergonomic 2.4GHz wireless mouse', 799.00, 50, '2025-08-13 17:24:00'),
+(2, 'Bluetooth Headphones', 'Over-ear noise-cancelling headphones', 2499.00, 30, '2025-08-13 17:24:00'),
+(3, 'USB-C Charger', '65W fast charging adapter', 1199.00, 100, '2025-08-13 17:24:00'),
+(4, 'Laptop Stand', 'Adjustable aluminum laptop stand', 1499.00, 40, '2025-08-13 17:24:00'),
+(5, 'Smartwatch', 'Fitness tracker with heart rate sensor', 3999.00, 25, '2025-08-13 17:24:00');
+
 cart
 cartid INT PRIMARY KEY AUTO_INCREMENT,
 user_id INT,

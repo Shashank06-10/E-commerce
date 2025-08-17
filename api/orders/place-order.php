@@ -88,7 +88,7 @@ try {
 <script>
   setTimeout(() => {
     window.location.href = 'http://localhost/ecommerce-user/pages/index.php';
-  }, 3000);
+  }, 2000);
 </script>
 ";
 
