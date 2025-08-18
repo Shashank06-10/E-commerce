@@ -25,14 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
       $stmt->execute([$name, $email, $hashed]);
 
-      // ✅ Redirect to login page after successful registration
       header("Location: login.php");
       exit;
     } catch (PDOException $e) {
-      $registerMsg = '⚠️ Email already exists or registration failed.';
+      $registerMsg = 'Email already exists or registration failed.';
     }
   } else {
-    $registerMsg = '⚠️ All fields are required.';
+    $registerMsg = 'All fields are required.';
   }
 }
 ?>

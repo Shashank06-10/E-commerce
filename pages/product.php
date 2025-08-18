@@ -1,6 +1,14 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class = "page-wrapper">
+  <?php
 require_once '../includes/db.php';
-// require_once '../includes/session.php';
 require_once '../components/header.php';
 
 $product = null;
@@ -13,7 +21,7 @@ if ($productId) {
 }
 
 if (!$product) {
-  echo "<main><p>⚠️ Product not found.</p></main>";
+  echo "<main><p>Product not found.</p></main>";
   require_once '../components/footer.php';
   exit;
 }
@@ -46,7 +54,7 @@ if (!$product) {
 document.getElementById('addToCartForm')?.addEventListener('submit', async function(e) {
   e.preventDefault();
   const formData = new FormData(this);
-
+  document.getElementById('cartMsg').textContent = '';
   try {
     const res = await fetch('http://localhost/ecommerce-user/api/cart/add-to-cart.php', {
       method: 'POST',
@@ -55,10 +63,13 @@ document.getElementById('addToCartForm')?.addEventListener('submit', async funct
     const data = await res.json();
     document.getElementById('cartMsg').textContent = data.message;
   } catch (error) {
-    document.getElementById('cartMsg').textContent = '⚠️ Failed to add to cart.';
+    document.getElementById('cartMsg').textContent = 'Failed to add to cart.';
     console.error('Cart error:', error);
   }
 });
 </script>
 
 <?php require_once '../components/footer.php'; ?>
+  </div>
+</body>
+</html>

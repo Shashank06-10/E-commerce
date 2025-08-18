@@ -1,9 +1,8 @@
 <?php
-// Database configuration
 $host     = 'localhost:3307';
 $dbname   = 'ecommerce_user';
 $username = 'root';
-$password = ''; // Update with your actual password
+$password = ''; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [

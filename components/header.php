@@ -8,7 +8,6 @@ session_start();
   <meta charset="UTF-8">
   <title>Ragula's eCommerce</title>
   <link rel="stylesheet" href="../assests/css/main.css">
-  <!-- <link rel="stylesheet" href="../assets/css/responsive.css"> -->
 </head>
 <body>
   <header>

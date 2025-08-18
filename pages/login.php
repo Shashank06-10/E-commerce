@@ -9,9 +9,7 @@
 <div class="page-wrapper">
 <?php
 require_once '../includes/db.php';
-// require_once '../includes/session.php';
 require_once '../components/header.php';
-// session_start();
 $loginMsg = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -26,14 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
       $_SESSION['user_id'] = $user['id'];
 
-      // ✅ Redirect to homepage after successful login
       header("Location: index.php");
       exit;
     } else {
-      $loginMsg = '⚠️ Invalid email or password.';
+      $loginMsg = ' Invalid email or password.';
     }
   } else {
-    $loginMsg = '⚠️ Both fields are required.';
+    $loginMsg = ' Both fields are required.';
   }
 }
 ?>
@@ -57,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <?php require_once '../components/footer.php'; ?>
+
 
 </div>
 </body>

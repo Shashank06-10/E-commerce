@@ -2,7 +2,7 @@
 require_once '../../includes/db.php';
 session_start();
 
-// 🔐 Ensure user is logged in
+// Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
   header('Location: login.php');
   exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $userId = $_SESSION['user_id'];
 
-// 🛒 Fetch cart items with product details
+// Fetch cart items with product details
 $stmt = $pdo->prepare("
   SELECT c.product_id, c.quantity, p.price, p.stock
   FROM cart c
@@ -26,11 +26,11 @@ if (count($cartItems) === 0) {
   exit;
 }
 
-// 🧮 Calculate total and validate stock
+// Calculate total and validate stock
 $total = 0;
 foreach ($cartItems as $item) {
   if ($item['quantity'] > $item['stock']) {
-    echo "<main><p>⚠️ Not enough stock for product ID {$item['product_id']}.</p></main>";
+    echo "<main><p>Not enough stock for product ID {$item['product_id']}.</p></main>";
     require_once '../components/footer.php';
     exit;
   }
@@ -40,7 +40,7 @@ foreach ($cartItems as $item) {
 $pdo->beginTransaction();
 
 try {
-  // 🧾 Insert order
+  // Insert order
   $placedAt = date('Y-m-d H:i:s');
   $status = 'Pending';
 
@@ -51,7 +51,7 @@ try {
   $stmt->execute([$userId, $total, $status, $placedAt]);
   $orderId = $pdo->lastInsertId();
 
-  // 📦 Deduct stock
+  // Deduct stock
   foreach ($cartItems as $item) {
     $stmt = $pdo->prepare("
       UPDATE products SET stock = stock - ? WHERE id = ?
@@ -59,7 +59,7 @@ try {
     $stmt->execute([$item['quantity'], $item['product_id']]);
   }
 
-  // 🧺 Insert order items
+  // Insert order items
   foreach ($cartItems as $item) {
     $stmt = $pdo->prepare("
       INSERT INTO order_items (order_id, product_id, quantity, price)
@@ -73,16 +73,16 @@ try {
     ]);
   }
 
-  // 🧹 Clear cart
+  // Clear cart
   $stmt = $pdo->prepare("DELETE FROM cart WHERE user_id = ?");
   $stmt->execute([$userId]);
 
   $pdo->commit();
 
-  // ✅ Success message and redirect
+  // Success message and redirect
   echo "
 <main>
-  <p>✅ Order placed successfully! Your order ID is <strong>$orderId</strong>.</p>
+  <p>Order placed successfully! Your order ID is <strong>$orderId</strong>.</p>
   <p>Redirecting to homepage...</p>
 </main>
 <script>
@@ -94,9 +94,7 @@ try {
 
 } catch (Exception $e) {
   $pdo->rollBack();
-  echo "<main><p>❌ Failed to place order. Please try again later.</p></main>";
+  echo "<main><p>Failed to place order. Please try again later.</p></main>";
   error_log('Order error: ' . $e->getMessage());
 }
 
-// Optional: include footer
-// require_once '../components/footer.php';

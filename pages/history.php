@@ -4,32 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Order History</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    .item-row td {
-      background-color: #f9f9f9;
-      padding-left: 2rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .order-row {
-      background-color: #eef;
-    }
-  </style>
-</head>
+ </head>
 <body>
 <div class="page-wrapper">
   <?php require_once '../components/header.php'; ?>
@@ -71,7 +46,7 @@
         orders.forEach(order => {
           const itemRows = order.items.map(item => `
             <tr class="item-row">
-              <td colspan="4">🛒 ${item.product_name} — Qty: ${item.quantity}, Price: ₹${item.price}</td>
+              <td colspan="4"> ${item.product_name} — Qty: ${item.quantity}, Price: ₹${item.price}</td>
             </tr>
           `).join('');
 
@@ -86,7 +61,7 @@
           `;
         });
       } catch (error) {
-        document.getElementById('orderMsg').textContent = '⚠️ Failed to load orders.';
+        document.getElementById('orderMsg').textContent = ' Failed to load orders.';
         console.error('Order history error:', error);
       }
     }

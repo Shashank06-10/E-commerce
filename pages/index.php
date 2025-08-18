@@ -1,11 +1,16 @@
-<?php
-require_once '../components/header.php';
-?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ragula Shop</title>
+</head>
+<body>
 <div class="page-wrapper">
+<?php require_once '../components/header.php';?>
   <main>
     <section class="hero">
-      <h1>Welcome to RagulaShop 🛍️</h1>
+      <h1>Welcome to RagulaShop </h1>
       <p>Discover our latest products and exclusive deals!</p>
     </section>
 
@@ -15,7 +20,7 @@ require_once '../components/header.php';
   </main>
 
   <?php require_once '../components/footer.php'; ?>
-</div>
+
 
 <script>
 async function loadProducts() {
@@ -38,10 +43,13 @@ async function loadProducts() {
       `;
     });
   } catch (error) {
-    container.innerHTML = '<p>⚠️ Failed to load products.</p>';
+    container.innerHTML = '<p> Failed to load products.</p>';
     console.error('Product load error:', error);
   }
 }
 
 loadProducts();
 </script>
+</div>
+</body>
+</html>

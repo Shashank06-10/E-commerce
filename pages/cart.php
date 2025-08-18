@@ -1,6 +1,5 @@
 <?php
 require_once '../includes/db.php';
-// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +37,7 @@ require_once '../includes/db.php';
 
     <main>
       <section class="cart">
-        <h2>Your Cart 🛒</h2>
+        <h2>Your Cart </h2>
 
         <?php if (count($cartItems) === 0): ?>
           <p>Your cart is empty.</p>
@@ -70,7 +69,7 @@ require_once '../includes/db.php';
           <p><strong>Total: ₹<?= number_format($total, 2) ?></strong></p>
 
           <form method="POST" action="../api/orders/place-order.php">
-            <button type="submit">🧾 Place Order</button>
+            <button type="submit"> Place Order</button>
           </form>
         <?php endif; ?>
       </section>
