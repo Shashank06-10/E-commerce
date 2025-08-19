@@ -1,6 +1,6 @@
 <footer>
   <div class="footer-container">
-    <p>&copy; <?= date('Y') ?> RagulaMart. All rights reserved.</p>
+    <p>Developed By Shashank</p>
     <nav class="footer-nav">
       <a href="/pages/about.php">About</a>
       <a href="/pages/contact.php">Contact</a>
