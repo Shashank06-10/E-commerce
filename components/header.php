@@ -12,7 +12,7 @@ session_start();
 <body>
   <header>
     <div class="logo">
-      <a href="index.php">🛍️ RagulaShop</a>
+      <a href="index.php"> RagulaShop</a>
     </div>
     <nav>
       <ul>

@@ -2,9 +2,6 @@
   <div class="footer-container">
     <p>Developed By Shashank</p>
     <nav class="footer-nav">
-      <a href="/pages/about.php">About</a>
-      <a href="/pages/contact.php">Contact</a>
-      <a href="/pages/privacy.php">Privacy Policy</a>
     </nav>
   </div>
 </footer>
