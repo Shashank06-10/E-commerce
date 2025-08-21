@@ -6,6 +6,33 @@
   </div>
 </footer>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
 footer {
   background-color: #222;
