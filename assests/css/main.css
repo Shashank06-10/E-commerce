@@ -6,6 +6,9 @@
     padding: 20px;
   }
   .product-card {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
