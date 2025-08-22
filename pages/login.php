@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main>
   <h2 class="title">Login to Your Account</h2>
-  <form method="POST" action="" class="auth-form">
+  <form method="POST" action="" class="auth-form" autocomplete="off">
   <label for="email">Email Address</label>
   <input type="email" id="email" name="email" placeholder="Email Address" required />
 
